@@ -23,7 +23,7 @@ LINKS		=		-lreadline
 all:    $(NAME)
 
 $(NAME):	$(SRC_OBJ)
-		gcc $(CFLAGS) $(LINKS) $(SRC_OBJ) -o $(NAME)
+		gcc $(CFLAGS) $(LINKS) -L/usr/local/lib -I/usr/local/include $(SRC_OBJ) -o $(NAME) 
 
 clean:
 	/bin/rm -f	*.o utils/*.o

@@ -12,12 +12,30 @@
 
 #include "minishell.h"
 
+
+// int ft_parse_new_line(char *line)
+// {
+// 	words = ft_split(line, " ");
+// 	if (words[0] == "echo")
+// 		ft_echo(words);
+// 	else if
+// 	{
+// 		continue;
+// 	}
+// 	return 1;
+// }
+
+
 int	main()
 {
 	char	*line;
 
-	line = readline(NULL);
-	printf("line was:\n%s\n", line);
+	while (1)
+	{
+		printf("%s", "rootMarco@1293123: ");
+		line = readline(NULL);
+		// ft_parse_new_line(line);
+	}
 	free(line);
 	return (0);
 }
