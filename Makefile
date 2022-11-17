@@ -3,38 +3,61 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marimatt <marimatt@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/06/20 14:44:53 by marimatt         ###   ########.fr        #
+#    Updated: 2022/11/17 11:10:13 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	    =		minishell
+NAME		=	minishell
 
-SRC     	=		main.c \
+SRC			=	src/main.c \
 
-CFLAGS  	=		-Wall -Werror -Wextra
+LIBFT		=	libft/libft.a
 
-SRC_OBJ 	=		$(SRC:.c=.o)
+CFLAGS		=	-Wall -Werror -Wextra
 
-LINKS		=		-lreadline
+OBJ_DIR		=	obj
 
-all:    $(NAME)
+OBJ		=	$(SRC:src/%.c=$(OBJ_DIR)/%.o)
 
-$(NAME):	$(SRC_OBJ)
-		gcc $(CFLAGS) $(LINKS) -L/usr/local/lib -I/usr/local/include $(SRC_OBJ) -o $(NAME) 
+LINKS		=	-lreadline
+
+all:	$(NAME)
 
 clean:
-	/bin/rm -f	*.o utils/*.o
+	@echo "-Removing minishell object files..."
+	@rm -rf $(OBJ_DIR)
+	@echo "		MINISHELL OBJECT DELETED!!"
+	@make -C libft clean
 
 fclean: clean
-	/bin/rm -f	$(NAME)
+	@echo "-Removing $(NAME)"
+	@rm -rf $(NAME)
+	@echo "		$(NAME) *.a DELETED!!"
+	@make -C libft fclean
 
-re: fclean
-	make
+re: fclean all
 
-rec: re
-	make clean
+rec: re clean
 
-.PHONY: re fclean clean rec all
+$(OBJ_DIR):
+			@mkdir $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: src/%.c
+				@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME):	$(OBJ_DIR) $(OBJ)
+			@echo "-Making libft..."
+			@make -s -C libft
+			@echo "-Making $(NAME)..."
+			@gcc $(CFLAGS) $(LINKS) $(LIBFT) -L/usr/local/lib -I/usr/local/include $(OBJ) -o $(NAME)
+			@gcc 
+			@echo "  $(NAME) CREATED!!"
+			@echo "		-COMPILED-"
+
+norm:
+		@norminette -R CheckForbiddenSourceHeader
+
+.PHONY: re fclean clean rec all norm
