@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/11/17 11:10:13 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/11/18 08:26:13 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ OBJ_DIR		=	obj
 OBJ		=	$(SRC:src/%.c=$(OBJ_DIR)/%.o)
 
 LINKS		=	-lreadline
+# LINKS		=	-lreadline -L$$HOME/.brew/opt/readline/lib -I $$HOME/.brew/opt/readline/include/readline
+# LINKS		=	-lreadline -L/usr/local/Cellar/readline/8.2.1/lib -I /usr/local/Cellar/readline/8.2.1/include/readline
 
 all:	$(NAME)
 
