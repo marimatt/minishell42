@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/18 08:56:18 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/18 09:03:21 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_parse_new_line(t_shell *shell)
 	i = -1;
 	if (ft_strncmp(shell->input, "echo ", 5) == 0)
 		ft_echo(shell);
+	else if (ft_strncmp(shell->input, "exit", 5) == 0)
+		exit (0);
 	return (1);
 }
 
