@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/11/24 08:46:02 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/11/24 09:29:29 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		=	minishell
 SRC			=	src/main.c
 
 SRC_BUILT	=	src/builtins/echo.c \
+				src/builtins/signal.c
 
 LIBFT		=	libft/libft.a
 

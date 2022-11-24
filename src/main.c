@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/24 09:24:17 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/24 09:29:09 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,6 @@ int	ft_parse_new_line(t_shell *shell)
 	else if (ft_strncmp(shell->input, "exit", 5) == 0)
 		exit (0);
 	return (1);
-}
-
-void	handle_sigint(int sig)
-{
-	(void)sig;
-	ft_printf("\n");
-	rl_on_new_line();
-	rl_redisplay();
-}
-
-void	handle_sigquit(int sig)
-{
-	(void)sig;
-	rl_on_new_line();
-	rl_redisplay();
 }
 
 int	main(int argc, char **argv)

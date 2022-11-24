@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:36:59 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/24 08:55:19 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/24 09:28:53 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ typedef struct s_shell
 }	t_shell;
 
 /*src*/
-int	ft_parse_new_line(t_shell *shell);
-int	main(int argc, char **argv);
+int		ft_parse_new_line(t_shell *shell);
+int		main(int argc, char **argv);
 	/*builtins*/
 		/*echo*/
-int	ft_echo(t_shell *shell);
+int		ft_echo(t_shell *shell);
+		/*signal*/
+void	handle_sigint(int sig);
+void	handle_sigquit(int sig);
 
 #endif
