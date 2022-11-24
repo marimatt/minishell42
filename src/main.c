@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/18 09:03:21 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/24 08:45:47 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(void)
 	while (1)
 	{
 		shell.input = readline("minishell: ");
+		if (ft_strncmp(shell.input, "", 1))
+			add_history(shell.input);
 		ft_parse_new_line(&shell);
 	}
 	free(shell.input);
