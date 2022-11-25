@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/24 09:29:09 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/25 09:14:49 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ int	ft_parse_new_line(t_shell *shell)
 	return (1);
 }
 
+int	loop(t_shell *shell)
+{
+	while (1)
+	{
+		signal(SIGINT, handle_sigint);
+		signal(SIGQUIT, handle_sigquit);
+		shell->input = readline("minishell: ");
+		if (!shell->input)
+			return (0 * write(1, "\n", 1));
+		if (ft_strncmp(shell->input, "", 1))
+			add_history(shell->input);
+		ft_parse_new_line(shell);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_shell	shell;
@@ -31,20 +47,10 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		printf("Error!! There must be only one argument");
-		exit (0);
-		printf("%s", argv[1]);
+		exit (1);
+		(void)argv;
 	}
-	while (1)
-	{
-		signal(SIGINT, handle_sigint);
-		signal(SIGQUIT, handle_sigquit);
-		shell.input = readline("minishell: ");
-		if (!shell.input)
-			return (0 * write(1, "\n", 1));
-		if (ft_strncmp(shell.input, "", 1))
-			add_history(shell.input);
-		ft_parse_new_line(&shell);
-	}
+	loop(&shell);
 	free(shell.input);
 	return (0);
 }
