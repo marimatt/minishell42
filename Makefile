@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/11/24 09:29:29 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/11/24 09:39:56 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,21 +32,21 @@ LINKS		=	-lreadline
 # LINKS		=	-lreadline -L/usr/local/Cellar/readline/8.2.1/lib -I /usr/local/Cellar/readline/8.2.1/include/readline
 
 GREEN='\033[1;32m'
-CYAN='\033[1;36m'
+RED='\033[1;31m'
 YELLOW='\033[33m'
 
 all:	$(NAME)
 
 clean:
-	@echo $(CYAN)"-Removing minishell object files..."
+	@echo $(YELLOW)"-Removing minishell object files..."
 	@rm -rf $(OBJ_DIR)
-	@echo $(GREEN)"		MINISHELL OBJECT DELETED!!"
+	@echo $(RED)"		MINISHELL OBJECT DELETED!!"
 	@make -C libft clean
 
 fclean: clean
-	@echo $(CYAN)"-Removing $(NAME)"
+	@echo $(YELLOW)"-Removing $(NAME)"
 	@rm -rf $(NAME)
-	@echo $(GREEN)"		$(NAME) *.a DELETED!!"
+	@echo $(RED)"		$(NAME) *.a DELETED!!"
 	@make -C libft fclean
 
 re: fclean all
@@ -64,11 +64,11 @@ $(OBJ_DIR)/builtins/%.o: src/builtins/%.c
 				@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJ_DIR) $(OBJ)
-			@echo $(CYAN)"-Making libft..."
+			@echo $(YELLOW)"-Making libft..."
 			@make -s -C libft
-			@echo $(CYAN)"-Making $(NAME)..."
+			@echo $(YELLOW)"-Making $(NAME)..."
 			@gcc $(CFLAGS) $(LINKS) $(LIBFT) -L/usr/local/lib -I/usr/local/include $(OBJ) -o $(NAME)
-			@echo $(YELLOW)"  $(NAME) CREATED!!"
+			@echo $(RED)"  $(NAME) CREATED!!"
 			@echo $(GREEN)"		-COMPILED-"
 
 norm:
