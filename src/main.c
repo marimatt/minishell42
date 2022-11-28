@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/28 11:03:25 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/28 11:29:51 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv, char **envp)
 	t_shell	shell;
 
 	(void)argv;
+	(void)envp;
 	if (argc > 1)
 		exit(write(1, "Error!! There must be only one argument\n", 40));
 	g_exit = 0;
