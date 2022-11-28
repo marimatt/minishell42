@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/28 10:07:07 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/28 11:03:25 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_parse_new_line(t_shell *shell)
 	else if (ft_strncmp(shell->input, "env", 4) == 0)
 		env(shell);
 	else if (ft_strncmp(shell->input, "exit", 5) == 0)
-		exit (0);
+		exit (write(1, "exit\n", 5));
 	else
-		exit(write(1, "it isn't a shell word\n", 21));
+		printf("it isn't a shell word\n");
 	return (1);
 }
 

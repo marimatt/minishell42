@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 08:48:52 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/18 08:49:20 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/28 11:05:18 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ int	ft_echo(t_shell *shell)
 	if (shell->input[5] == '-' && shell->input[6] == 'n')
 	{
 		i = 7;
-		while (shell->input[++i])
-			printf("%c", shell->input[i]);
+		while (shell->input[i])
+		{
+			if (shell->input[++i] == '-' && shell->input[++i] == 'n')
+				i++;
+			else
+				while (shell->input[i])
+					printf("%c", shell->input[++i]);
+		}
 	}
 	else
 	{
