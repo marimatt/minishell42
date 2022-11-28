@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/25 09:14:49 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/28 10:07:07 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	ft_parse_new_line(t_shell *shell)
 	i = -1;
 	if (ft_strncmp(shell->input, "echo ", 5) == 0)
 		ft_echo(shell);
+	else if (ft_strncmp(shell->input, "env", 4) == 0)
+		env(shell);
 	else if (ft_strncmp(shell->input, "exit", 5) == 0)
 		exit (0);
+	else
+		exit(write(1, "it isn't a shell word\n", 21));
 	return (1);
 }
 
@@ -40,16 +44,15 @@ int	loop(t_shell *shell)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	t_shell	shell;
 
+	(void)argv;
 	if (argc > 1)
-	{
-		printf("Error!! There must be only one argument");
-		exit (1);
-		(void)argv;
-	}
+		exit(write(1, "Error!! There must be only one argument\n", 40));
+	g_exit = 0;
+	get_env(envp, &shell.env);
 	loop(&shell);
 	free(shell.input);
 	return (0);
