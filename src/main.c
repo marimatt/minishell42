@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/29 09:14:42 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/29 10:43:48 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int argc, char **argv, char **envp)
 		exit(write(1, "Error!! There must be only one argument\n", 40));
 	g_exit = 0;
 	get_env(envp, &shell.env);
+	shell.env[1] = ("SHELL=minishell");
 	loop(&shell);
 	free(shell.input);
 	return (0);

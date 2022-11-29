@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 09:35:44 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/29 09:20:26 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/29 10:13:30 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	env(t_shell *shell)
 	int		i;
 
 	i = -1;
-	shell->env[1] = ("SHELL=minishell");
 	while (shell->env[++i])
 		printf("%s\n", shell->env[i]);
 	free(shell->exit);

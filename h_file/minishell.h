@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:36:59 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/29 08:27:54 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/29 10:40:59 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int	g_exit;
 typedef struct s_shell
 {
 	char	*input;
-	char	*history;
+	char	*word;
 	char	**env;
 	char	*exit;
 	char	*pipe;
 	char	*cmd;
+	char	*sort;
 }	t_shell;
 
 /*src*/
