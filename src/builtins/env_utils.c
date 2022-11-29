@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 09:35:44 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/28 11:31:01 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:20:26 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,11 @@ char	*ft_chrjoin(char *s1, char s2)
 void	env(t_shell *shell)
 {
 	int		i;
-	int		j;
 
 	i = -1;
-	shell->pipe = malloc(sizeof(char) * 1);
-	shell->pipe[0] = '\0';
+	shell->env[1] = ("SHELL=minishell");
 	while (shell->env[++i])
-	{
-		j = -1;
-		while (shell->env[i][++j])
-			shell->pipe = ft_chrjoin(shell->pipe, shell->env[i][j]);
-		shell->pipe = ft_chrjoin(shell->pipe, '\n');
-	}
+		printf("%s\n", shell->env[i]);
 	free(shell->exit);
 	shell->exit = ft_strdup("0");
 }
