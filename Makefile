@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/11/29 10:41:52 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/11/30 09:37:27 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC			=	src/main.c
 SRC_BUILT	=	src/builtins/echo.c \
 				src/builtins/env_utils.c \
 				src/builtins/env.c \
+				src/builtins/export.c \
 				src/builtins/signal.c
 
 LIBFT		=	libft/libft.a

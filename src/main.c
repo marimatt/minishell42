@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/29 10:43:48 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/30 09:36:13 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_parse_new_line(t_shell *shell)
 		env(shell);
 	else if (ft_strncmp(shell->input, "exit", 5) == 0)
 		exit (write(1, "exit\n", 5));
+	else if (ft_strncmp(shell->input, "export", 7) == 0)
+		export(shell);
 	else if (ft_strncmp(shell->input, "", 2))
 		printf("it isn't a shell word\n");
 	return (1);
@@ -54,7 +56,6 @@ int	main(int argc, char **argv, char **envp)
 		exit(write(1, "Error!! There must be only one argument\n", 40));
 	g_exit = 0;
 	get_env(envp, &shell.env);
-	shell.env[1] = ("SHELL=minishell");
 	loop(&shell);
 	free(shell.input);
 	return (0);

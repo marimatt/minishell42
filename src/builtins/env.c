@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 08:21:50 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/29 09:14:27 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/30 09:33:07 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_env(char **envp, char ***env)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (envp[i])
 		i++;
 	*env = malloc(sizeof(char *) * (i + 1));

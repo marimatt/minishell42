@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:36:59 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/29 10:40:59 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/30 09:37:10 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ void	get_env(char **envp, char ***env);
 int		replece_variable(char **cmd, char *line, t_shell *shell, int i);
 void	free_cmd(char **cmd, char *cmd_m);
 void	change_env(char **cmd, t_shell *shell);
+		/*export*/
+char	**sort(char **sorting);
+void	export(t_shell *shell);
 		/*signal*/
 void	handle_sigint(int sig);
 void	handle_sigquit(int sig);
