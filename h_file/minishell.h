@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:36:59 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/30 09:37:10 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/12/01 08:59:35 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,11 @@ int		main(int argc, char **argv, char **envp);
 	/*builtins*/
 		/*echo*/
 int		ft_echo(t_shell *shell);
-		/*env_utils*/
-int		free_env(char **env);
-char	*ft_chrjoin(char *s1, char s2);
-void	env(t_shell *shell);
 		/*env*/
+int		free_env(char **env);
 void	init_shlvl(char	***env, char **envp, int i);
 void	get_env(char **envp, char ***env);
-int		replece_variable(char **cmd, char *line, t_shell *shell, int i);
-void	free_cmd(char **cmd, char *cmd_m);
-void	change_env(char **cmd, t_shell *shell);
+void	env(t_shell *shell);
 		/*export*/
 char	**sort(char **sorting);
 void	export(t_shell *shell);

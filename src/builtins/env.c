@@ -5,12 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 08:21:50 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/30 09:33:07 by mvolpi           ###   ########.fr       */
+/*   Created: 2022/12/01 08:56:09 by mvolpi            #+#    #+#             */
+/*   Updated: 2022/12/01 09:25:18 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h_file/minishell.h"
+
+int	free_env(char **env)
+{
+	int	i;
+
+	i = -1;
+	if (!env)
+		return (1);
+	while (env[++i])
+		free(env[i]);
+	free(env);
+	return (0);
+}
 
 void	init_shlvl(char	***env, char **envp, int i)
 {
@@ -50,64 +63,25 @@ void	get_env(char **envp, char ***env)
 	(*env)[i] = 0;
 }
 
-int	replece_variable(char **cmd, char *line, t_shell *shell, int i)
+void	env(t_shell *shell)
 {
+	int	i;
 	int	j;
-	int	x;
-
-	j = -1;
-	while (ft_isalnum(line[i]))
-		i++;
-	if (line[1] == '?' && i--)
-	{
-		while (shell->exit[++j])
-			*cmd = ft_chrjoin(*cmd, shell->exit[j]);
-		return (1);
-	}
-	while (shell->env[++j])
-	{
-		if (!ft_strncmp(shell->env[j], &line[1], i - 1)
-			&& shell->env[j][i - 1] == '=')
-		{
-			x = 0;
-			while (shell->env[j][i - 1 + ++x])
-				*cmd = ft_chrjoin(*cmd, shell->env[j][i - 1 + x]);
-			break ;
-		}
-	}
-	return (i - 1);
-}
-
-void	free_cmd(char **cmd, char *cmd_m)
-{
-	free(*cmd);
-	*cmd = ft_strdup(cmd_m);
-	free(cmd_m);
-}
-
-void	change_env(char **cmd, t_shell *shell)
-{
-	char	*cmd_m;
-	int		i;
-	int		a[2];
+	int	b;
 
 	i = -1;
-	a[0] = 0;
-	a[1] = 0;
-	cmd_m = malloc(sizeof(char) * 2);
-	if (!cmd_m)
-		return ;
-	ft_bzero(cmd_m, 2);
-	while ((*cmd)[++i])
+	while (shell->env[++i])
 	{
-		if ((*cmd)[i] == '\'' && !a[1])
-			a[0] = (a[0] + 1) % 2;
-		if ((*cmd)[i] == '\"')
-			a[1] = (a[1] + 1) % 2;
-		if ((*cmd)[i] == '$' && !a[0])
-			i += replece_variable(&cmd_m, &(*cmd)[i], shell, 1);
-		else
-			cmd_m = ft_chrjoin(cmd_m, (*cmd)[i]);
+		b = 1;
+		j = -1;
+		while (shell->env[i][++j])
+		{
+			if (ft_strncmp(&shell->env[i][j], "=", 1) == 0)
+				b = 0;
+		}
+		if (b == 0)
+			printf("%s\n", shell->env[i]);
 	}
-	free_cmd(cmd, cmd_m);
+	free(shell->exit);
+	shell->exit = ft_strdup("0");
 }

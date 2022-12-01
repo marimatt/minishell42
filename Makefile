@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/12/01 08:37:47 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/12/01 08:58:32 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME		=	minishell
 SRC			=	src/main.c
 
 SRC_BUILT	=	src/builtins/echo.c \
-				src/builtins/env_utils.c \
 				src/builtins/env.c \
 				src/builtins/export.c \
 				src/builtins/signal.c
