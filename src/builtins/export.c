@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 09:34:10 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/30 13:51:07 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/12/01 09:41:08 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,22 @@
 void	add_var(t_shell *shell)
 {
 	int	i;
+	int	j;
+	int	c;
 
 	i = 0;
 	while (shell->env[i])
 		i++;
+	i = i + 1;
+	c = 7;
+	j = 0;
+	while (shell->input[++c])
+	{
+		shell->env[i][j] = c;
+		printf("%c ", shell->env[i][j]);
+		j++;
+		i++;
+	}
 }
 
 char	**sort(char **sorting)
