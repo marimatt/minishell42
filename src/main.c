@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/30 09:36:13 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:39:54 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ int	ft_parse_new_line(t_shell *shell)
 	int	i;
 
 	i = -1;
-	if (ft_strncmp(shell->input, "echo ", 5) == 0)
+	if (ft_strncmp(shell->input, "echo", 5) == 0
+		|| ft_strncmp(shell->input, "echo ", 5) == 0)
 		ft_echo(shell);
-	else if (ft_strncmp(shell->input, "env", 4) == 0)
+	else if (ft_strncmp(shell->input, "env ", 4) == 0
+		|| ft_strncmp(shell->input, "env", 4) == 0)
 		env(shell);
-	else if (ft_strncmp(shell->input, "exit", 5) == 0)
+	else if (ft_strncmp(shell->input, "exit ", 5) == 0
+		|| ft_strncmp(shell->input, "exit", 5) == 0)
 		exit (write(1, "exit\n", 5));
-	else if (ft_strncmp(shell->input, "export", 7) == 0)
+	else if (ft_strncmp(shell->input, "export", 7) == 0
+		|| ft_strncmp(shell->input, "export ", 7) == 0)
 		export(shell);
 	else if (ft_strncmp(shell->input, "", 2))
 		printf("it isn't a shell word\n");

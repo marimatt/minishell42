@@ -6,11 +6,20 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 09:34:10 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/11/30 10:13:41 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/11/30 13:51:07 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h_file/minishell.h"
+
+void	add_var(t_shell *shell)
+{
+	int	i;
+
+	i = 0;
+	while (shell->env[i])
+		i++;
+}
 
 char	**sort(char **sorting)
 {
@@ -42,9 +51,17 @@ void	export(t_shell *shell)
 	char	**sort_env;
 	int		i;
 
-	sort_env = sort(shell->env);
-	i = -1;
-	while (sort_env[++i])
-		printf("declare -x %s\n", sort_env[i]);
+	sort_env = NULL;
+	if (ft_strncmp(shell->input, "export  ", 8) > 0)
+	{
+		add_var(shell);
+	}	
+	else
+	{
+		sort_env = sort(shell->env);
+		i = -1;
+		while (sort_env[++i])
+			printf("declare -x %s\n", sort_env[i]);
+	}
 	free(sort_env);
 }

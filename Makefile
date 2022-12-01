@@ -6,7 +6,7 @@
 #    By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/02 13:02:52 by marimatt          #+#    #+#              #
-#    Updated: 2022/11/30 09:37:27 by mvolpi           ###   ########.fr        #
+#    Updated: 2022/12/01 08:37:47 by mvolpi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,16 @@ CFLAGS		=	-Wall -Werror -Wextra
 
 OBJ_DIR		=	obj
 
-OBJ		=	$(SRC:src/%.c=$(OBJ_DIR)/%.o) \
+OBJ			=	$(SRC:src/%.c=$(OBJ_DIR)/%.o) \
 				$(SRC_BUILT:src/builtins/%.c=$(OBJ_DIR)/builtins/%.o)
 					
 
 LINKS		=	-lreadline
 # LINKS		=	-lreadline -L$$HOME/.brew/opt/readline/lib -I $$HOME/.brew/opt/readline/include/readline
 # LINKS		=	-lreadline -L/usr/local/Cellar/readline/8.2.1/lib -I /usr/local/Cellar/readline/8.2.1/include/readline
+
+BRANCH 		?= $(shell bash -c 'read -p "Branch: " branch; echo $$branch')
+COMMIT 		?= $(shell bash -c 'read -p "Commit: " commit; echo $$commit')
 
 GREEN='\033[1;32m'
 RED='\033[1;31m'
@@ -76,5 +79,13 @@ $(NAME):	$(OBJ_DIR) $(OBJ)
 
 norm:
 		@norminette -R CheckForbiddenSourceHeader
+
+add: fclean
+		@git add *.c *.h Makefile
+		@git status
+
+push: add
+	git commit -m $(COMMIT)
+	@git push origin $(BRANCH)
 
 .PHONY: re fclean clean rec all norm
