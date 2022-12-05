@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 09:34:10 by mvolpi            #+#    #+#             */
-/*   Updated: 2022/12/01 09:41:08 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/12/05 08:37:39 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void	add_var(t_shell *shell)
 	j = 0;
 	while (shell->input[++c])
 	{
-		shell->env[i][j] = c;
+		shell->env[i][j] = shell->input[c];
 		printf("%c ", shell->env[i][j]);
 		j++;
-		i++;
 	}
 }
 

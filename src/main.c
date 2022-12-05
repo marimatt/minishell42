@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/11/30 14:39:54 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/12/05 09:13:14 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_parse_new_line(t_shell *shell)
 		export(shell);
 	else if (ft_strncmp(shell->input, "", 2))
 		printf("it isn't a shell word\n");
-	return (1);
+	return (0);
 }
 
 int	loop(t_shell *shell)
@@ -55,7 +55,6 @@ int	main(int argc, char **argv, char **envp)
 	t_shell	shell;
 
 	(void)argv;
-	(void)envp;
 	if (argc > 1)
 		exit(write(1, "Error!! There must be only one argument\n", 40));
 	g_exit = 0;
