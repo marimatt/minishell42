@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:37:02 by marimatt          #+#    #+#             */
-/*   Updated: 2022/12/05 09:13:14 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/12/05 09:47:15 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	loop(t_shell *shell)
 			return (0 * write(1, "\n", 1));
 		if (ft_strncmp(shell->input, "", 1))
 			add_history(shell->input);
-		ft_parse_new_line(shell);
+		ft_parse(shell);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mvolpi <mvolpi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:36:59 by marimatt          #+#    #+#             */
-/*   Updated: 2022/12/05 08:30:43 by mvolpi           ###   ########.fr       */
+/*   Updated: 2022/12/05 11:29:52 by mvolpi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct s_shell
 	char	*pipe;
 	char	*cmd;
 	char	*sort;
+	char	*split;
+	char	**ls_cmd;
+	int		trim;
+	int		l;
 }	t_shell;
 
 /*src*/
